@@ -8,4 +8,4 @@ let x: Thing = {
   foo: 3,
 };
 
-console.log(x.foo);
+console.log("hi from posix design system", x.foo);
