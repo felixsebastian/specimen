@@ -1,0 +1,25 @@
+{
+  "name": "posix-design-system",
+  "version": "1.0.0",
+  "description": "A cool design system created by Felix Sebastian for side projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixsebastian/posix-design-system.git"
+  },
+  "author": "hi@felixsebastian.dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felixsebastian/posix-design-system/issues"
+  },
+  "homepage": "https://github.com/felixsebastian/posix-design-system#readme",
+  "dependencies": {
+    "@capsizecss/core": "^3.0.0",
+    "@types/lodash": "^4.14.0",
+    "lodash": "^4.17.0",
+    "nanoid": "^3.3.2"
+  }
+}
