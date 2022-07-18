@@ -1,3 +1,12 @@
-import React from "react";
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
 
-export default () => <p>hi!</p>;
+export default () => (
+  <p
+    css={css`
+      background-color: red;
+    `}
+  >
+    hi!
+  </p>
+);
