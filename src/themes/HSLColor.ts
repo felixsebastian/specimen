@@ -23,7 +23,7 @@ export default class HSLColor {
 
   toString() {
     const rgb = this.asRGB();
-    if ((this.o == 1)) return `rgb(${rgb.join(",")})`;
+    if (this.o == 1) return `rgb(${rgb.join(",")})`;
     return `rgba(${rgb.join(",")},${this.o})`;
   }
 }

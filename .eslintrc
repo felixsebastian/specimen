@@ -6,15 +6,20 @@
   },
   "plugins": [
     "@typescript-eslint",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:@typescript-eslint/recommended"
   ],
-  "rules": {},
   "env": {
     "browser": true,
     "es2021": true
-  }
+  },
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "ignorePatterns": [
+    "lib/**"
+  ]
 }

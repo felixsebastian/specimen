@@ -2,19 +2,19 @@ import { memoize } from "lodash";
 import HSLColor from "./HSLColor";
 
 type Hue<T = never> = "info" | "success" | "warning" | "error" | "link" | T;
-type Grayscale = -3 | -2 | -1 | 0 | 1  |  2 | 3;
+type Grayscale = -3 | -2 | -1 | 0 | 1 | 2 | 3;
 type Saturation = "dull" | "mid" | "bright";
 type Lightness = "dark" | "mid" | "light";
-type Opacity =  'faint' | 'mid' | 'opaque';
+type Opacity = "faint" | "mid" | "opaque";
 type Space = number;
 
-type TriadicHue = Hue<"red" | "yellow" | "blue">
+type TriadicHue = Hue<"red" | "yellow" | "blue">;
 
 const triadicColors = (hue: number) => {
-  return [hue, hue+120, hue+240]
-}
+  return [hue, hue + 120, hue + 240];
+};
 
-const triad = triadicColors(5)
+const triad = triadicColors(5);
 
 // letters are short for red, orange, yellow, green, blue, purple
 const colors = {
@@ -25,7 +25,7 @@ const colors = {
   link: triad[2],
   blue: triad[2],
   red: triad[0],
-  yellow: triad[1]
+  yellow: triad[1],
 };
 
 const saturations = {
@@ -46,8 +46,12 @@ const opacities = {
   opaque: 1,
 };
 
-const color = (h: TriadicHue, s: Saturation, l: Lightness, o: Opacity = 'opaque') =>
-  new HSLColor(colors[h], saturations[s], lightnesses[l], opacities[o]);
+const color = (
+  h: TriadicHue,
+  s: Saturation,
+  l: Lightness,
+  o: Opacity = "opaque"
+) => new HSLColor(colors[h], saturations[s], lightnesses[l], opacities[o]);
 
 const grayscale = (g: Grayscale) => new HSLColor(0, 0, (g / 6) * 255);
 

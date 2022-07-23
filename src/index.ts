@@ -1,12 +1,6 @@
-export { default as MyComponent } from "./MyComponent";
-import theme from './themes/default'
-
-interface Thing {
-  foo: number;
-}
-
-const x: Thing = {
-  foo:  3,
-};
-
-console.log("hi from posix design system", x.foo, theme);
+export { default as Box } from "./Box";
+export { default as Stack } from "./Stack";
+export { default as Text } from "./Text";
+export { default as tshirts } from "./units/tshirts";
+export * from "./sizing";
+export { ThemeProvider as Provider, Theme } from "@emotion/react";
