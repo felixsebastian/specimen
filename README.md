@@ -1,4 +1,3 @@
-# Posix Design System
+# [Specimen](https://felixsebastian.github.io/specimen/)
 
-A cool design system created by Felix Sebastian for side projects
-
+A design system framework
