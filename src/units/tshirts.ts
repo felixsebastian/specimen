@@ -4,6 +4,7 @@ export type Sizes =
   | "4xs"
   | "3xs"
   | "2xs"
+  | "xs"
   | "sm"
   | "md"
   | "lg"

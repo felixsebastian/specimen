@@ -1,11 +1,23 @@
-import { ReactNode } from "react";
+import { css, jsx } from "@emotion/react";
+import { SerializedStyles } from "@emotion/react";
+import { forwardRef, HTMLProps, ReactNode } from "react";
 import useSs, { SsProps } from "./useSs";
 
-interface Props extends SsProps {
-  children: ReactNode;
+interface Props extends SsProps, HTMLProps<HTMLElement> {
+  children?: ReactNode;
+  css?: SerializedStyles;
+  as?: string;
+  handleClick?: (e: MouseEvent) => void;
 }
 
-export default (props: Props) => {
+export default forwardRef((props: Props, ref) => {
   const ss = useSs(props);
-  return <div css={ss}>{props.children}</div>;
-};
+
+  return jsx(props.as ?? "div", {
+    ref,
+    css: css(ss),
+    className: props.className,
+    children: props.children,
+    onClick: props.handleClick,
+  });
+});

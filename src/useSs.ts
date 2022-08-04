@@ -20,12 +20,14 @@ export interface SsProps {
   radius?: Sizes;
   boxShadow?: Sizes;
   shadow?: Sizes;
+  d?: string;
 }
 
 export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
   const { size, color, shadow } = useTheme();
 
   return {
+    display: css.d,
     paddingTop: size(css.pt ?? py ?? p).px,
     paddingBottom: size(css.pb ?? py ?? p).px,
     paddingLeft: size(css.pl ?? px ?? p).px,
@@ -34,7 +36,7 @@ export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
     marginBottom: size(css.mb ?? my ?? m).px,
     marginLeft: size(css.ml ?? mx ?? m).px,
     marginRight: size(css.mr ?? mx ?? m).px,
-    backgroundColor: color(css.bg),
+    backgroundColor: color(css.bg).hex,
     borderRadius: size(css.radius).px,
     boxShadow: shadow(css.shadow),
   };

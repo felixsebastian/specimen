@@ -2,7 +2,9 @@ import { round } from "lodash";
 
 const createSize = (px?: number) => ({
   px,
-
+  get s() {
+    return this.toString();
+  },
   toString: function toString() {
     if (typeof this.px === "number") return `${this.px}px`;
     else return undefined;
