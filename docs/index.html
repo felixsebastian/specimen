@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Specimen Design Framework</title>
+    <title>Specimen</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=IBM+Plex+Mono:wght@300&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
       body {
         background: #fffeff;
@@ -14,7 +14,7 @@
 
       body,
       p,
-      button {
+      button, h1, h2, h3, li {
         font-family: 'IBM Plex Sans', sans-serif;
         color: #533;
       }
@@ -41,14 +41,73 @@
         text-decoration: none;
         font-weight: 500
       }
+
+      h2, h3, h4, h5 {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      p, ul {
+        margin-top: 0;
+        margin-bottom: 2rem;
+      }
+
+      .code-block {
+        font-family: 'IBM Plex Sans', sans-serif;
+        background-color: #111;
+        color: white;
+        border-radius: 0.2rem;
+        box-shadow: 0 -1px 10px 2px rgba(230, 255, 237, 0.4) inset;
+        padding: 1rem;
+        overflow: auto;
+      }
+
+      .mb-0 {
+        margin-bottom: 0;
+      }
     </style>
   </head>
   <body>
     <div class="page">
       <h1 class="logo">Specimen</h1>
-      <h2 class="subheading">Design system framework</h2>
       <p>A framework and ecosystem for building custom design systems without reinventing the wheel. Built on <a href="https://emotion.sh/docs/introduction" target="_blank">Emotion</a>, inspired by <a href="https://chakra-ui.com/" target="_blank">Chakra UI</a> and <a href="https://styled-system.com/" target="_blank">Styled System</a>.</p>
-      <img width="1050" src="./specimen.png" alt="Stack diagram" />
-    <div>
+      <img width="1050" height="395" src="./specimen.png" alt="Stack diagram" />
+      <h2>Getting started</h2>
+      <p class="mb-0">Specimen provides a variety of helpful utilities that lets you define a theme with a few lines of code. You can always come back and tweak or define these later in more detail.</p>
+      <pre class="code-block">import { flow } from "lodash";
+import { tShirts, goldenRatioSize, linearSize, triadic, materialShadows, createThemeProvider, combine, grayscale } from "@specimen/foundation";
+
+// import ThemeProvider in your client code
+export const ThemeProvider = createThemeProvider({
+  color: combine(grayscale, complementary(275, "indigo", "forest"), { primary: '#4287f5' }), // create a color palette with colors such as black, grey.500, indigo.300 and primary
+  space: flow(tShirts, goldenRatioSize), // will map 'md' to 16px, 'lg' to 26px etc. according to the golden ratio
+  fontSize: flow(tShirts, linearSize(12, 2)), // will map 'md' to 12px, 'lg' to 14px etc
+  shadow: materialShadows // creates sm md and lg shadows
+})</pre>
+      <p class="mb-0">Re-export specimen components as required</p>
+      <pre class="code-block">export * from "@specimen/foundation/components";
+export * from "@specimen/button/components";
+export * from "@specimen/select/components";
+</pre>
+      <p class="mb-0">Create your custom components</p>
+<pre class="code-block">export const MyCoolComponent = () => &lt;Box p="md" bg={({color}) => color("primary").rgba(2)}&gt;
+    &lt;Text&gt;Hi from component!&lt;/Text&gt;
+&lt;/Box&gt;</pre>
+      <p>Congrats! You now have a powerful and highly customizable design system at your fingertips.</p>
+      <h2>Why not start from scratch?</h2>
+      <ul>
+        <li>Hit the ground running and focus on custom components that really matter</li>
+        <li>Start building earlier without getting hung up on the details</li>
+        <li>Avoid the pain of depending on custom components that later turn out to be flawed</li>
+        <li>Take advantage of an ecosystem that's built on a shared language</li>
+        <li>Stop reinventing the wheel</li>
+      </ul>
+      <h2>Philosophy</h2>
+      <h3>Make the common case as simple as possible</h3>
+      <p>Much like Chakra UI, Specimen makes common things like spacing between elements, centering divs, padding and border radius trivially easy. You'll rarely need to write CSS, but when you do, the css prop is always available to you.</p>
+      <h3>Functions over design tokens</h3>
+      <p>Most design tokens follow some mathematical rule, so why not use functions instead? Functions can be composed, tweaked and interchanged much more easily</p>
+      <h3>Visual first</h3>
+      <p>Specimen decouples visual presentation from semantics, so next time you need a link that looks like a button or vice versa, start with the visuals and go from there</p>
   </body>
 </html>
