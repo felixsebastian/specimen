@@ -2,6 +2,8 @@ import { useTheme } from "@emotion/react";
 import { Sizes } from "./units/tshirts";
 
 export interface SsProps {
+  w?: Sizes;
+  h?: Sizes;
   p?: Sizes;
   px?: Sizes;
   py?: Sizes;
@@ -28,6 +30,8 @@ export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
 
   return {
     display: css.d,
+    width: size(css.w).px,
+    height: size(css.h).px,
     paddingTop: size(css.pt ?? py ?? p).px,
     paddingBottom: size(css.pb ?? py ?? p).px,
     paddingLeft: size(css.pl ?? px ?? p).px,

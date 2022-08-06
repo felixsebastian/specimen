@@ -26,6 +26,7 @@ interface TextProps {
   size?: Sizes;
   weight?: Weight;
   underline?: boolean;
+  align?: "left" | "center" | "right";
 }
 
 interface Props
@@ -66,6 +67,7 @@ export default (props: Props) => {
       display: "block",
       margin: 0,
       fontWeight: weight && weights[weight],
+      textAlign: props.align,
       textDecoration: props.underline ? "underline" : undefined,
       color: color(props.color ?? "text").hex,
       ...createStyleObject({
