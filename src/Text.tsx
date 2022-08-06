@@ -1,6 +1,6 @@
 import { jsx, useTheme, css } from "@emotion/react";
-import { pick } from "lodash";
-import { createContext, ReactNode, useContext } from "react";
+import { omit, pick } from "lodash";
+import { createContext, HTMLProps, ReactNode, useContext } from "react";
 import useSs, { SsProps } from "./useSs";
 import { createStyleObject } from "@capsizecss/core";
 import { Sizes } from "./units/tshirts";
@@ -28,10 +28,14 @@ interface TextProps {
   underline?: boolean;
 }
 
-interface Props extends Pick<SsProps, typeof ssProps[number]>, TextProps {
+interface Props
+  extends Pick<SsProps, typeof ssProps[number]>,
+    TextProps,
+    Omit<HTMLProps<HTMLElement>, "size"> {
   children: ReactNode;
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   font?: string;
+  as?: string;
 }
 
 const textContext = createContext<TextProps>({});
@@ -52,9 +56,10 @@ export default (props: Props) => {
   props = { ...contextProps, ...props };
   const { weight, headingLevel } = props;
   const font = fonts[props.font ?? defaultFont];
+  const size = props.size ?? "md";
 
-  return jsx(headingLevel ? `h${headingLevel}` : "p", {
-    children: props.children,
+  return jsx(props.as ?? (headingLevel ? `h${headingLevel}` : "p"), {
+    ...omit(props, ssProps),
     css: css({
       ...ss,
       fontFamily: font.name,
@@ -64,8 +69,8 @@ export default (props: Props) => {
       textDecoration: props.underline ? "underline" : undefined,
       color: color(props.color ?? "text").hex,
       ...createStyleObject({
-        capHeight: fontSize(props.size).px,
-        lineGap: fontSize(props.size).px,
+        capHeight: fontSize(size).px,
+        lineGap: fontSize(size).px,
         fontMetrics: font.metrics,
       }),
     }),
