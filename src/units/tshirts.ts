@@ -1,4 +1,5 @@
 export type Sizes =
+  | "none"
   | "6xs"
   | "5xs"
   | "4xs"
@@ -29,6 +30,7 @@ export default (s: string) => {
   if (!s) return null;
 
   const lut = {
+    none: null,
     xs: -2,
     sm: -1,
     md: 0,

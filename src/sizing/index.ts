@@ -1,13 +1,19 @@
 import { round, isNull } from "lodash";
 
-export const createSize = (px: null | number) => ({
-  px: isNull(px) ? null : Math.max(1, round(px)),
+// {s, space, c, color}
+// p="sm" p={space('sm').raw + 2}
+
+export const createSize = (pixels: null | number) => ({
+  raw: isNull(pixels) ? null : Math.max(1, round(pixels)),
   get s() {
     return this.toString();
   },
-  toString: function toString() {
-    if (typeof this.px === "number") return `${this.px}px`;
+  toString: function toString(): string | undefined {
+    if (typeof this.raw === "number") return `${this.raw}px`;
     else return undefined;
+  },
+  css: function () {
+    return this.toString();
   },
 });
 

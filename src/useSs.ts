@@ -2,8 +2,8 @@ import { useTheme } from "@emotion/react";
 import { Sizes } from "./units/tshirts";
 
 export interface SsProps {
-  w?: Sizes;
-  h?: Sizes;
+  w?: Sizes | "full";
+  h?: Sizes | "full";
   p?: Sizes;
   px?: Sizes;
   py?: Sizes;
@@ -26,22 +26,22 @@ export interface SsProps {
 }
 
 export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
-  const { size, color, shadow } = useTheme();
+  const { s, color, shadow } = useTheme();
 
   return {
     display: css.d,
-    width: size(css.w).px,
-    height: size(css.h).px,
-    paddingTop: size(css.pt ?? py ?? p).px,
-    paddingBottom: size(css.pb ?? py ?? p).px,
-    paddingLeft: size(css.pl ?? px ?? p).px,
-    paddingRight: size(css.pr ?? px ?? p).px,
-    marginTop: size(css.mt ?? my ?? m).px,
-    marginBottom: size(css.mb ?? my ?? m).px,
-    marginLeft: size(css.ml ?? mx ?? m).px,
-    marginRight: size(css.mr ?? mx ?? m).px,
+    width: css.w === "full" ? "100%" : s[css.w ?? ""],
+    height: css.h === "full" ? "100%" : s[css.h ?? ""],
+    paddingTop: s[css.pt ?? py ?? p ?? ""],
+    paddingBottom: s[css.pb ?? py ?? p ?? ""],
+    paddingLeft: s[css.pl ?? px ?? p ?? ""],
+    paddingRight: s[css.pr ?? px ?? p ?? ""],
+    marginTop: s[css.mt ?? my ?? m ?? ""],
+    marginBottom: s[css.mb ?? my ?? m ?? ""],
+    marginLeft: s[css.ml ?? mx ?? m ?? ""],
+    marginRight: s[css.mr ?? mx ?? m ?? ""],
+    borderRadius: s[css.radius ?? ""],
     backgroundColor: color(css.bg).hex,
-    borderRadius: size(css.radius).px,
     boxShadow: shadow(css.shadow),
   };
 };

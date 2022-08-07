@@ -30,7 +30,7 @@ export default forwardRef(
         d="flex"
         css={css({
           flexWrap: "wrap",
-          gap: size(props.gap ?? "md").px,
+          gap: size(props.gap ?? "md").raw,
           alignItems: alignments[alignY ?? "top"],
         })}
         className={props.className}

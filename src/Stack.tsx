@@ -22,7 +22,7 @@ export default forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
           display: flex;
           flex-direction: column;
         `,
-        { rowGap: props.gap === null ? undefined : size(props.gap ?? "md").px }
+        { rowGap: props.gap === null ? undefined : size(props.gap ?? "md").raw }
       )}
       ref={ref}
       className={props.className}

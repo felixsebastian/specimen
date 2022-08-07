@@ -21,7 +21,7 @@ const weights = {
 
 type Weight = keyof typeof weights;
 
-interface TextProps {
+export interface TextProps {
   color?: string;
   size?: Sizes;
   weight?: Weight;
@@ -71,8 +71,8 @@ export default (props: Props) => {
       textDecoration: props.underline ? "underline" : undefined,
       color: color(props.color ?? "text").hex,
       ...createStyleObject({
-        capHeight: fontSize(size).px,
-        lineGap: fontSize(size).px,
+        capHeight: fontSize(size).raw,
+        lineGap: fontSize(size).raw,
         fontMetrics: font.metrics,
       }),
     }),

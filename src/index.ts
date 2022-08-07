@@ -10,5 +10,7 @@ export { default as TextLink } from "./TextLink";
 export { default as tshirts } from "./units/tshirts";
 export { default as useTheme } from "./useTheme";
 export { default as createColor } from "./createColor";
+export { Theme } from "@emotion/react";
+export type { Color, Font } from "./types";
+export { default as SpecimenProvider } from "./SpecimenProvider";
 export * from "./sizing";
-export { ThemeProvider as Provider, Theme } from "@emotion/react";
