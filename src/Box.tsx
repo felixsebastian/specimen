@@ -1,23 +1,49 @@
 import { css, jsx } from "@emotion/react";
-import { SerializedStyles } from "@emotion/react";
-import { pick } from "lodash";
+import { omit } from "lodash";
 import { forwardRef, HTMLProps, ReactNode } from "react";
 import useSs, { SsProps } from "./useSs";
 
-interface Props extends SsProps, HTMLProps<HTMLElement> {
+const ssProps = [
+  "w",
+  "h",
+  "p",
+  "px",
+  "py",
+  "pt",
+  "pb",
+  "pl",
+  "pr",
+  "m",
+  "mx",
+  "my",
+  "mt",
+  "mb",
+  "ml",
+  "mr",
+  "bg",
+  "radius",
+  "boxShadow",
+  "shadow",
+  "d",
+];
+
+export interface Props extends SsProps, Omit<HTMLProps<HTMLElement>, "ref"> {
   children?: ReactNode;
-  css?: SerializedStyles;
   as?: string;
   handleClick?: (e: MouseEvent) => void;
 }
+
+const propsToOmit = ["handleClick", "as", ...ssProps];
 
 export default forwardRef((props: Props, ref) => {
   const ss = useSs(props);
 
   return jsx(props.as ?? "div", {
-    ...pick(props, ["children", "className", "id"]),
+    ...omit(props, propsToOmit),
     onClick: props.handleClick,
     ref,
     css: css(ss),
   });
 });
+
+export type BoxProps = Props;

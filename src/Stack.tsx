@@ -1,5 +1,5 @@
 import { css, SerializedStyles, useTheme } from "@emotion/react";
-import { Children, forwardRef, ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import { Sizes } from "./units/tshirts";
 import useSs, { SsProps } from "./useSs";
 
@@ -27,9 +27,7 @@ export default forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
       ref={ref}
       className={props.className}
     >
-      {Children.map(props.children, (child) => (
-        <div>{child}</div>
-      ))}
+      {props.children}
     </div>
   );
 });

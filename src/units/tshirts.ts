@@ -1,47 +1,43 @@
 export type Sizes =
   | "none"
-  | "6xs"
-  | "5xs"
-  | "4xs"
-  | "3xs"
-  | "2xs"
-  | "xs"
+  | "sm6"
+  | "sm5"
+  | "sm4"
+  | "sm3"
+  | "sm2"
   | "sm"
   | "md"
   | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | "5xl"
-  | "6xl"
-  | "7xl"
-  | "8xl"
-  | "9xl"
-  | "10xl"
-  | "11xl"
-  | "12xl"
-  | "13xl"
-  | "14xl"
-  | "15xl"
-  | "16xl";
+  | "lg2"
+  | "lg3"
+  | "lg4"
+  | "lg5"
+  | "lg6"
+  | "lg7"
+  | "lg8"
+  | "lg9"
+  | "lg10"
+  | "lg11"
+  | "lg12"
+  | "lg13"
+  | "lg14"
+  | "lg15"
+  | "lg16";
 
 export default (s: string) => {
   if (!s) return null;
 
   const lut = {
     none: null,
-    xs: -2,
     sm: -1,
     md: 0,
     lg: 1,
-    xl: 2,
   };
 
   if (lut[s] !== undefined) return lut[s];
-  const xln = s.match(/^([0-9]+)xl$/);
-  const xsn = s.match(/^([0-9]+)xs$/);
-  if (xln) return Number(xln[1]) + 1;
-  if (xsn) return (Number(xsn[1]) + 1) * -1;
+  const xln = s.match(/^lg([0-9]+)$/);
+  const xsn = s.match(/^sm([0-9]+)$/);
+  if (xln) return Number(xln[1]);
+  if (xsn) return Number(xsn[1]) * -1;
   throw new Error("Invalid size: " + s);
 };

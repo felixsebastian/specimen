@@ -10,7 +10,7 @@ const weights = {
   ultra: 800,
   black: 800,
   bold: 700,
-  semibold: 600,
+  semiBold: 600,
   medium: 500,
   regular: 400,
   light: 300,

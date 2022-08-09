@@ -26,7 +26,7 @@ export interface SsProps {
 }
 
 export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
-  const { s, color, shadow } = useTheme();
+  const { s, c, shadow } = useTheme();
 
   return {
     display: css.d,
@@ -41,7 +41,7 @@ export default ({ p, m, px, py, mx, my, ...css }: SsProps) => {
     marginLeft: s[css.ml ?? mx ?? m ?? ""],
     marginRight: s[css.mr ?? mx ?? m ?? ""],
     borderRadius: s[css.radius ?? ""],
-    backgroundColor: color(css.bg).hex,
+    backgroundColor: c[css.bg ?? ""],
     boxShadow: shadow(css.shadow),
   };
 };

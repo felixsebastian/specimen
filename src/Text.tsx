@@ -58,6 +58,7 @@ export default (props: Props) => {
   const { weight, headingLevel } = props;
   const font = fonts[props.font ?? defaultFont];
   const size = props.size ?? "md";
+  if (!props.children) return null;
 
   return jsx(props.as ?? (headingLevel ? `h${headingLevel}` : "p"), {
     ...omit(props, ssProps),
