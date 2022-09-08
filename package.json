@@ -1,11 +1,14 @@
 {
   "name": "@specimen/foundation",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A cool design system created by Felix Sebastian for side projects",
   "homepage": "https://felixsebastian.github.io/specimen/",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "jest",
     "build": "rm -rf lib && npm run build:esm && npm run build:cjs",
