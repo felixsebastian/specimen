@@ -28,7 +28,7 @@ export default (s: string) => {
   if (!s) return null;
 
   const lut = {
-    none: null,
+    none: "none",
     sm: -1,
     md: 0,
     lg: 1,

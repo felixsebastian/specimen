@@ -1,4 +1,4 @@
-import { useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { ReactNode } from "react";
 
 export interface Props {
@@ -9,25 +9,31 @@ export interface Props {
 }
 
 export default (props: Props) => {
-  const { color } = useTheme();
+  const { c, s } = useTheme();
 
   return (
     <a
       href={props.href}
       target={props.newTab ? "_blank" : undefined}
-      css={
+      css={css(
+        css`
+          border-radius: ${s.sm3};
+          &:focus-visible {
+            outline: ${s.sm3} solid ${c.outline};
+          }
+        `,
         props.inline
           ? {
               display: "inline-block",
               textDecoration: "underline",
-              color: color("link").hex,
+              color: c.link,
             }
           : {
               display: "block",
               textDecoration: "none",
               color: "inherit",
             }
-      }
+      )}
     >
       {props.children}
     </a>
