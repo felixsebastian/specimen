@@ -1,6 +1,6 @@
 {
   "name": "@specimen/foundation",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A cool design system created by Felix Sebastian for side projects",
   "homepage": "https://felixsebastian.github.io/specimen/",
   "main": "./lib/cjs/index.js",
