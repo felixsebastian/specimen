@@ -17,9 +17,9 @@ export default (props: Props) => {
       target={props.newTab ? "_blank" : undefined}
       css={css(
         css`
-          border-radius: ${s.sm3};
+          border-radius: ${s.xxs};
           &:focus-visible {
-            outline: ${s.sm3} solid ${c.outline};
+            outline: ${s.xxs} solid ${c.outline};
           }
         `,
         props.inline

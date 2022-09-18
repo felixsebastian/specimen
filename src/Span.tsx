@@ -7,7 +7,7 @@ import { Sizes } from "./units/tshirts";
 const ssProps = ["px", "pl", "pr", "mx", "ml", "mr"] as const;
 
 const weights = {
-  ultra: 800,
+  ultraBlack: 900,
   black: 800,
   bold: 700,
   semiBold: 600,

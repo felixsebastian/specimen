@@ -1,43 +1,101 @@
 export type Sizes =
   | "none"
-  | "sm6"
-  | "sm5"
-  | "sm4"
-  | "sm3"
-  | "sm2"
+  | "6xs"
+  | "5xs"
+  | "4xs"
+  | "3xs"
+  | "2xs"
+  | "xxxxxxs"
+  | "xxxxxs"
+  | "xxxxs"
+  | "xxxs"
+  | "xxs"
+  | "xs"
   | "sm"
   | "md"
   | "lg"
-  | "lg2"
-  | "lg3"
-  | "lg4"
-  | "lg5"
-  | "lg6"
-  | "lg7"
-  | "lg8"
-  | "lg9"
-  | "lg10"
-  | "lg11"
-  | "lg12"
-  | "lg13"
-  | "lg14"
-  | "lg15"
-  | "lg16";
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl"
+  | "7xl"
+  | "8xl"
+  | "9xl"
+  | "10xl"
+  | "11xl"
+  | "12xl"
+  | "13xl"
+  | "14xl"
+  | "15xl"
+  | "16xl"
+  | "xxl"
+  | "xxxl"
+  | "xxxxl"
+  | "xxxxxl"
+  | "xxxxxxl"
+  | "xxxxxxxl"
+  | "xxxxxxxxl"
+  | "xxxxxxxxxl"
+  | "xxxxxxxxxxl"
+  | "xxxxxxxxxxxl"
+  | "xxxxxxxxxxxxl"
+  | "xxxxxxxxxxxxxl"
+  | "xxxxxxxxxxxxxxl"
+  | "xxxxxxxxxxxxxxxl"
+  | "xxxxxxxxxxxxxxxxl";
+
+const lut: Record<Sizes, "none" | number> = {
+  none: "none",
+  ["6xs"]: -7,
+  ["5xs"]: -6,
+  ["4xs"]: -5,
+  ["3xs"]: -4,
+  ["2xs"]: -3,
+  xxxxxxs: -7,
+  xxxxxs: -6,
+  xxxxs: -5,
+  xxxs: -4,
+  xxs: -3,
+  xs: -2,
+  sm: -1,
+  md: 0,
+  lg: 1,
+  xl: 2,
+  ["2xl"]: 3,
+  ["3xl"]: 4,
+  ["4xl"]: 5,
+  ["5xl"]: 6,
+  ["6xl"]: 7,
+  ["7xl"]: 8,
+  ["8xl"]: 9,
+  ["9xl"]: 10,
+  ["10xl"]: 11,
+  ["11xl"]: 12,
+  ["12xl"]: 13,
+  ["13xl"]: 14,
+  ["14xl"]: 15,
+  ["15xl"]: 16,
+  ["16xl"]: 17,
+  xxl: 3,
+  xxxl: 4,
+  xxxxl: 5,
+  xxxxxl: 6,
+  xxxxxxl: 7,
+  xxxxxxxl: 8,
+  xxxxxxxxl: 9,
+  xxxxxxxxxl: 10,
+  xxxxxxxxxxl: 11,
+  xxxxxxxxxxxl: 12,
+  xxxxxxxxxxxxl: 13,
+  xxxxxxxxxxxxxl: 14,
+  xxxxxxxxxxxxxxl: 15,
+  xxxxxxxxxxxxxxxl: 16,
+  xxxxxxxxxxxxxxxxl: 17,
+};
 
 export default (s: string) => {
   if (!s) return null;
-
-  const lut = {
-    none: "none",
-    sm: -1,
-    md: 0,
-    lg: 1,
-  };
-
-  if (lut[s] !== undefined) return lut[s];
-  const xln = s.match(/^lg([0-9]+)$/);
-  const xsn = s.match(/^sm([0-9]+)$/);
-  if (xln) return Number(xln[1]);
-  if (xsn) return Number(xsn[1]) * -1;
-  throw new Error("Invalid size: " + s);
+  return lut[s];
 };
