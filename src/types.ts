@@ -18,7 +18,7 @@ export interface Font {
   metrics?: any;
 }
 
-export interface Theme {
+export interface Theme extends Record<string, any> {
   size: (query?: string) => Pixels;
   s: Record<Sizes, string>;
   fontSize: (n?: Sizes) => Pixels;
