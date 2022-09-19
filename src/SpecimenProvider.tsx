@@ -25,13 +25,14 @@ const createProxy = <T extends Style>(
   return proxy as any;
 };
 
-type InputTheme = Omit<Theme, "s">;
+type InputTheme = Omit<Theme, "s" | "c">;
 
-const processTheme = (theme: InputTheme): Theme => ({
-  ...theme,
-  s: createProxy<Pixels>(theme.size),
-  c: createProxy<Color>(theme.color),
-});
+const processTheme = (theme: InputTheme) =>
+  ({
+    ...theme,
+    s: createProxy<Pixels>(theme.size),
+    c: createProxy<Color>(theme.color),
+  } as Theme);
 
 interface Props {
   children?: ReactNode;
