@@ -1,4 +1,5 @@
-import { css, SerializedStyles, useTheme } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
+import useTheme from "./useTheme";
 import { forwardRef, ReactNode } from "react";
 import { Sizes } from "./units/tshirts";
 import useSs, { SsProps } from "./useSs";

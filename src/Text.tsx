@@ -1,4 +1,5 @@
-import { jsx, useTheme, css } from "@emotion/react";
+import { jsx, css } from "@emotion/react";
+import useTheme from "./useTheme";
 import { omit, pick } from "lodash";
 import { createContext, HTMLProps, ReactNode, useContext } from "react";
 import useSs, { SsProps } from "./useSs";

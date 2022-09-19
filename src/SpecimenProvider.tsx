@@ -1,6 +1,6 @@
-import { Theme, ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@emotion/react";
 import { ReactNode, useMemo } from "react";
-import { Color, Pixels, Style } from "./types";
+import { Theme, Color, Pixels, Style } from "./types";
 import { Sizes } from "./units/tshirts";
 
 const createProxy = <T extends Style>(

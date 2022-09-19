@@ -1,4 +1,4 @@
-import { useTheme } from "@emotion/react";
+import useTheme from "./useTheme";
 import { Sizes } from "./units/tshirts";
 
 export interface SsProps {
