@@ -22,7 +22,7 @@ const weights = {
 
 type Weight = keyof typeof weights;
 
-export interface TextProps {
+export interface TextStyle {
   color?: string;
   size?: Sizes;
   weight?: Weight;
@@ -32,7 +32,7 @@ export interface TextProps {
 
 interface Props
   extends Pick<SsProps, typeof ssProps[number]>,
-    TextProps,
+    TextStyle,
     Omit<HTMLProps<HTMLElement>, "size"> {
   children: ReactNode;
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -40,10 +40,12 @@ interface Props
   as?: string;
 }
 
-const textContext = createContext<TextProps>({});
+export type TextProps = Props;
+
+const textContext = createContext<TextStyle>({});
 const Provider = textContext.Provider;
 
-interface ProviderProps extends TextProps {
+interface ProviderProps extends TextStyle {
   children: ReactNode;
 }
 
