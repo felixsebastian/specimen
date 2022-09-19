@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import useTheme from "./useTheme";
 import { forwardRef, ReactNode } from "react";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 import useSs, { SsProps } from "./useSs";
 
 const alignments = {
@@ -12,7 +12,7 @@ const alignments = {
 };
 
 interface Props extends SsProps {
-  gap?: null | Sizes;
+  gap?: null | TShirtSizes;
   children: ReactNode;
   css?: SerializedStyles;
   className?: string;

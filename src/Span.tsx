@@ -2,7 +2,7 @@ import useTheme from "./useTheme";
 import { pick } from "lodash";
 import { ReactNode } from "react";
 import useSs, { SsProps } from "./useSs";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 
 const ssProps = ["px", "pl", "pr", "mx", "ml", "mr"] as const;
 
@@ -23,7 +23,7 @@ type Weight = keyof typeof weights;
 interface Props extends Pick<SsProps, typeof ssProps[number]> {
   children: ReactNode;
   color?: string;
-  size?: Sizes;
+  size?: TShirtSizes;
   weight?: Weight;
 }
 

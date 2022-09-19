@@ -1,4 +1,4 @@
-export type Sizes =
+export type TShirtSizes =
   | "none"
   | "6xs"
   | "5xs"
@@ -46,7 +46,7 @@ export type Sizes =
   | "xxxxxxxxxxxxxxxl"
   | "xxxxxxxxxxxxxxxxl";
 
-const lut: Record<Sizes, "none" | number> = {
+const lut: Record<TShirtSizes, "none" | number> = {
   none: "none",
   ["6xs"]: -7,
   ["5xs"]: -6,

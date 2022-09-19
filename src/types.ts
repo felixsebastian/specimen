@@ -1,4 +1,4 @@
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 
 export interface Style {
   css: () => string;
@@ -20,9 +20,9 @@ export interface Font {
 
 export interface Theme extends Record<string, any> {
   size: (query?: string) => Pixels;
-  s: Record<Sizes, string>;
-  fontSize: (n?: Sizes) => Pixels;
-  shadow: (n?: Sizes) => string;
+  s: Record<TShirtSizes, string>;
+  fontSize: (n?: TShirtSizes) => Pixels;
+  shadow: (n?: TShirtSizes) => string;
   color: (n?: unknown) => Color;
   c: Record<string, string>;
   defaultFont: string;

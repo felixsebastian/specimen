@@ -1,11 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
 import { ReactNode, useMemo } from "react";
 import { Theme, Color, Pixels, Style } from "./types";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 
 const createProxy = <T extends Style>(
   fn: (query?: string) => T
-): Record<Sizes, string> => {
+): Record<TShirtSizes, string> => {
   const proxy = new Proxy(
     {},
     {

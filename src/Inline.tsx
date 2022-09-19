@@ -2,13 +2,13 @@ import { css, SerializedStyles } from "@emotion/react";
 import useTheme from "./useTheme";
 import { forwardRef, ReactNode, Ref } from "react";
 import Box from "./Box";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 import { SsProps } from "./useSs";
 
 interface Props extends SsProps {
   as?: string;
   children?: ReactNode;
-  gap?: Sizes;
+  gap?: TShirtSizes;
   alignY?: "top" | "bottom" | "center";
   css?: SerializedStyles;
   className?: string;

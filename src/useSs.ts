@@ -1,27 +1,27 @@
 import useTheme from "./useTheme";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 
 export interface SsProps {
-  w?: Sizes | "full";
-  h?: Sizes | "full";
-  p?: Sizes;
-  px?: Sizes;
-  py?: Sizes;
-  pt?: Sizes;
-  pb?: Sizes;
-  pl?: Sizes;
-  pr?: Sizes;
-  m?: Sizes;
-  mx?: Sizes;
-  my?: Sizes;
-  mt?: Sizes;
-  mb?: Sizes;
-  ml?: Sizes;
-  mr?: Sizes;
+  w?: TShirtSizes | "full";
+  h?: TShirtSizes | "full";
+  p?: TShirtSizes;
+  px?: TShirtSizes;
+  py?: TShirtSizes;
+  pt?: TShirtSizes;
+  pb?: TShirtSizes;
+  pl?: TShirtSizes;
+  pr?: TShirtSizes;
+  m?: TShirtSizes;
+  mx?: TShirtSizes;
+  my?: TShirtSizes;
+  mt?: TShirtSizes;
+  mb?: TShirtSizes;
+  ml?: TShirtSizes;
+  mr?: TShirtSizes;
   bg?: string;
-  radius?: Sizes;
-  boxShadow?: Sizes;
-  shadow?: Sizes;
+  radius?: TShirtSizes;
+  boxShadow?: TShirtSizes;
+  shadow?: TShirtSizes;
   d?: string;
 }
 

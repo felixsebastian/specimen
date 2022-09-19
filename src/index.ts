@@ -8,6 +8,7 @@ export { default as Text } from "./Text";
 export { default as Span } from "./Span";
 export { default as Link } from "./Link";
 export { default as TextLink } from "./TextLink";
+export * from "./units/tshirts";
 export { default as tshirts } from "./units/tshirts";
 export { default as useTheme } from "./useTheme";
 export { default as createColor } from "./createColor";

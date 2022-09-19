@@ -4,7 +4,7 @@ import { omit, pick } from "lodash";
 import { createContext, HTMLProps, ReactNode, useContext } from "react";
 import useSs, { SsProps } from "./useSs";
 import { createStyleObject } from "@capsizecss/core";
-import { Sizes } from "./units/tshirts";
+import { TShirtSizes } from "./units/tshirts";
 
 const ssProps = ["bg", "radius"] as const;
 
@@ -24,7 +24,7 @@ type Weight = keyof typeof weights;
 
 export interface TextStyle {
   color?: string;
-  size?: Sizes;
+  size?: TShirtSizes;
   weight?: Weight;
   underline?: boolean;
   align?: "left" | "center" | "right";
