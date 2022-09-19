@@ -1,4 +1,5 @@
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
+import useTheme from "./useTheme";
 import { ReactNode } from "react";
 
 export interface Props {

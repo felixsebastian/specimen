@@ -1,3 +1,3 @@
 import { useTheme } from "@emotion/react";
-import { Theme } from "./ts/theme";
+import { Theme } from "./types";
 export default useTheme as () => Theme;

@@ -1,4 +1,4 @@
-import { useTheme } from "@emotion/react";
+import useTheme from "./useTheme";
 import { pick } from "lodash";
 import { ReactNode } from "react";
 import useSs, { SsProps } from "./useSs";
