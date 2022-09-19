@@ -10,7 +10,7 @@ export interface Pixels extends Style {
 
 export interface Color extends Style {
   hex: string;
-  rgba: string;
+  rgba: (opacity: number) => string;
 }
 
 export interface Font {
