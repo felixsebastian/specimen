@@ -1,21 +1,30 @@
 import { css } from "@emotion/react";
 import useTheme from "./useTheme";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import navigationContext from "./navigationContext";
 
 export interface Props {
-  href: string;
-  newTab?: boolean;
+  to: string;
+  newWindow?: boolean;
   children: ReactNode;
   inline?: boolean;
+  useNativeNavigation?: boolean;
 }
 
 export default (props: Props) => {
   const { c, s } = useTheme();
+  const navigationFn = useContext(navigationContext);
 
   return (
     <a
-      href={props.href}
-      target={props.newTab ? "_blank" : undefined}
+      href={props.to}
+      onClick={(e) => {
+        if (!props.useNativeNavigation && navigationFn) {
+          e.preventDefault();
+          navigationFn(props.to);
+        }
+      }}
+      target={props.newWindow ? "_blank" : undefined}
       css={css(
         css`
           border-radius: ${s.xxs};

@@ -1,7 +1,10 @@
 import { ThemeProvider } from "@emotion/react";
 import { ReactNode, useMemo } from "react";
+import navigationContext, { NavigationFn } from "./navigationContext";
 import { Theme, Color, Pixels, Style } from "./types";
 import { TShirtSizes } from "./units/tshirts";
+
+const NavigationProvider = navigationContext.Provider;
 
 const createProxy = <T extends Style>(
   fn: (query?: string) => T
@@ -37,11 +40,16 @@ const processTheme = (theme: InputTheme) =>
 interface Props {
   children?: ReactNode;
   theme: InputTheme;
+  navigationFn?: NavigationFn;
 }
 
 const SpecimenProvider = ({ theme, ...props }: Props) => {
   const processedTheme = useMemo(() => processTheme(theme), [theme]);
-  return <ThemeProvider theme={processedTheme}>{props.children}</ThemeProvider>;
+  return (
+    <NavigationProvider value={props.navigationFn ?? null}>
+      <ThemeProvider theme={processedTheme}>{props.children}</ThemeProvider>
+    </NavigationProvider>
+  );
 };
 
 export default SpecimenProvider;
