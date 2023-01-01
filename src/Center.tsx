@@ -1,21 +1,19 @@
 import { css } from "@emotion/react";
-import { ReactNode } from "react";
+import Box, { BoxProps } from "./Box";
+import WithChildren from "./types/WithChildren";
 
-interface Props {
-  children: ReactNode;
-}
-
-const Center = (props: Props) => (
-  <div
+const Center = (props: BoxProps & WithChildren) => (
+  <Box
+    d="flex"
+    h="full"
     css={css`
-      height: 100%;
-      display: flex;
       align-items: center;
       justify-content: center;
     `}
+    {...props}
   >
     {props.children}
-  </div>
+  </Box>
 );
 
 export default Center;

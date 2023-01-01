@@ -1,8 +1,9 @@
 import { css, SerializedStyles } from "@emotion/react";
 import useTheme from "./useTheme";
-import { forwardRef, ReactNode } from "react";
+import { forwardRef } from "react";
 import { TShirtSizes } from "./units/tshirts";
 import useSs, { SsProps } from "./useSs";
+import WithChildren from "./WithChildren";
 
 const alignments = {
   stretch: "stretch",
@@ -11,9 +12,8 @@ const alignments = {
   center: "center",
 };
 
-interface Props extends SsProps {
+interface Props extends SsProps, WithChildren {
   gap?: null | TShirtSizes;
-  children: ReactNode;
   css?: SerializedStyles;
   className?: string;
   alignX?: keyof typeof alignments;

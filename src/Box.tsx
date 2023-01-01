@@ -1,7 +1,8 @@
-import { css, jsx } from "@emotion/react";
+import { jsx } from "@emotion/react";
 import { omit } from "lodash";
-import { forwardRef, HTMLProps, ReactNode } from "react";
+import { forwardRef, HTMLProps } from "react";
 import useSs, { SsProps } from "./useSs";
+import WithChildren from "./WithChildren";
 
 const ssProps = [
   "w",
@@ -27,8 +28,10 @@ const ssProps = [
   "d",
 ];
 
-export interface Props extends SsProps, Omit<HTMLProps<HTMLElement>, "ref"> {
-  children?: ReactNode;
+export interface Props
+  extends SsProps,
+    Omit<HTMLProps<HTMLElement>, "ref">,
+    WithChildren {
   as?: string;
   handleClick?: (e: MouseEvent) => void;
 }
@@ -41,8 +44,8 @@ export default forwardRef((props: Props, ref) => {
   return jsx(props.as ?? "div", {
     ...omit(props, propsToOmit),
     onClick: props.handleClick,
+    css: ss,
     ref,
-    css: css(ss),
   });
 });
 

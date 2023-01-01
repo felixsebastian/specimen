@@ -1,8 +1,10 @@
 import { ThemeProvider } from "@emotion/react";
-import { ReactNode, useMemo } from "react";
+import { useMemo } from "react";
+import CssReset from "./CssReset";
 import navigationContext, { NavigationFn } from "./navigationContext";
 import { Theme, Color, Pixels, Style } from "./types";
 import { TShirtSizes } from "./units/tshirts";
+import WithChildren from "./WithChildren";
 
 const NavigationProvider = navigationContext.Provider;
 
@@ -37,16 +39,18 @@ const processTheme = (theme: InputTheme) =>
     c: createProxy<Color>(theme.color),
   } as Theme);
 
-interface Props {
-  children?: ReactNode;
+interface Props extends WithChildren {
   theme: InputTheme;
   navigationFn?: NavigationFn;
+  cssReset?: boolean;
 }
 
-const SpecimenProvider = ({ theme, ...props }: Props) => {
+const SpecimenProvider = ({ theme, cssReset = true, ...props }: Props) => {
   const processedTheme = useMemo(() => processTheme(theme), [theme]);
+
   return (
     <NavigationProvider value={props.navigationFn ?? null}>
+      {cssReset && <CssReset />}
       <ThemeProvider theme={processedTheme}>{props.children}</ThemeProvider>
     </NavigationProvider>
   );
