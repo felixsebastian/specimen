@@ -1,4 +1,3 @@
-import { pick } from "lodash";
 import useSs, { SsProps } from "../useSs";
 import InlineStyle from "./InlineStyle";
 import useStyleCss from "./useStyleCss";
@@ -7,10 +6,20 @@ import WithChildren from "../WithChildren";
 
 const ssProps = ["px", "pl", "pr", "mx", "ml", "mr"] as const;
 
-export default (
-  props: Pick<SsProps, typeof ssProps[number]> & InlineStyle & WithChildren
-) => {
-  const ss = useSs(pick(props, ssProps));
+interface Props
+  extends Pick<SsProps, typeof ssProps[number]>,
+    InlineStyle,
+    WithChildren {
+  className?: string;
+}
+
+export default (props: Props) => {
+  const ss = useSs(props);
   const styleCss = useStyleCss(props);
-  return <span css={css(ss, styleCss)}>{props.children}</span>;
+
+  return (
+    <span css={css(ss, styleCss)} className={props.className}>
+      {props.children}
+    </span>
+  );
 };
