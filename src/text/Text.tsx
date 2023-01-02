@@ -15,15 +15,18 @@ const ssProps = ["bg", "radius"] as const;
 const IsInlineProvider = isInlineContext.Provider;
 type IntrinsicElementNames = keyof JSX.IntrinsicElements;
 
-interface Props
-  extends Pick<SsProps, typeof ssProps[number]>,
-    Style,
-    WithChildren,
-    WithHtmlAttributes {
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+interface TextStyle extends Style {
   font?: string;
   size?: TShirtSizes;
   align?: "left" | "center" | "right";
+}
+
+interface Props
+  extends Pick<SsProps, typeof ssProps[number]>,
+    WithChildren,
+    WithHtmlAttributes,
+    TextStyle {
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   as?: IntrinsicElementNames;
 }
 
@@ -31,9 +34,10 @@ export type TextProps = Props;
 const textContext = createContext<Style>({});
 const Provider = textContext.Provider;
 
-export const TextProvider = ({ children, ...props }: Style & WithChildren) => (
-  <Provider value={props}>{children}</Provider>
-);
+export const TextProvider = ({
+  children,
+  ...props
+}: TextStyle & WithChildren) => <Provider value={props}>{children}</Provider>;
 
 export default (props: Props) => {
   const { fontSize, defaultFont, fonts } = useTheme();
