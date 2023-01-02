@@ -19,7 +19,6 @@ export interface SsProps {
   ml?: TShirtSizes;
   mr?: TShirtSizes;
   radius?: TShirtSizes;
-  boxShadow?: TShirtSizes;
   shadow?: TShirtSizes;
   bg?: string;
   d?: string;
