@@ -9,6 +9,7 @@ import WithChildren from "../WithChildren";
 import WithHtmlAttributes from "../WithHtmlAttributes";
 import getHtmlAttributes from "../getHtmlAttributes";
 import BlockStyle from "./BlockStyle";
+import { forwardRef } from "react";
 
 const ssProps = ["bg", "radius"] as const;
 const IsInlineProvider = isInlineContext.Provider;
@@ -32,7 +33,7 @@ export const TextProvider = ({
   ...props
 }: BlockStyle & WithChildren) => <Provider value={props}>{children}</Provider>;
 
-export default (props: Props) => {
+export default forwardRef((props: Props, ref) => {
   const { fontSize, defaultFont, fonts } = useTheme();
   const ss = useSs(props);
   const contextProps = useContext(textContext);
@@ -49,6 +50,7 @@ export default (props: Props) => {
         props.as ?? (headingLevel ? `h${headingLevel}` : "p"),
         {
           ...getHtmlAttributes(props),
+          ref,
           css: css(ss, styleCss, {
             fontFamily: font.name,
             textAlign: props.align,
@@ -63,4 +65,4 @@ export default (props: Props) => {
       )}
     </IsInlineProvider>
   );
-};
+});
