@@ -1,9 +1,9 @@
 import { CSSObject } from "@emotion/react";
 import useTheme from "../useTheme";
-import { Style } from "./InlineStyle";
+import InlineStyle from "./InlineStyle";
 import weights from "./weights";
 
-const useStyleCss = (style: Style): CSSObject => {
+const useStyleCss = (style: InlineStyle): CSSObject => {
   const { color } = useTheme();
 
   let weight;
