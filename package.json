@@ -15,8 +15,7 @@
     "build:esm": "tsc --module esnext --outDir lib/esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "publish": "npm run build && npm publish"
+    "lint:fix": "eslint --fix ."
   },
   "repository": {
     "type": "git",
