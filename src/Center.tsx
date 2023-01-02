@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
+import { forwardRef } from "react";
 import Box, { BoxProps } from "./Box";
-import WithChildren from "./types/WithChildren";
 
-const Center = (props: BoxProps & WithChildren) => (
+const Center = forwardRef((props: BoxProps, ref) => (
   <Box
     d="flex"
     h="full"
@@ -11,9 +11,8 @@ const Center = (props: BoxProps & WithChildren) => (
       justify-content: center;
     `}
     {...props}
-  >
-    {props.children}
-  </Box>
-);
+    ref={ref}
+  />
+));
 
 export default Center;

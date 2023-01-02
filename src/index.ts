@@ -8,6 +8,7 @@ export { default as Link } from "./Link";
 export * from "./units/tshirts";
 export { default as tshirts } from "./units/tshirts";
 export { default as useTheme } from "./useTheme";
+export { default as List } from "./List";
 export { default as createColor } from "./createColor";
 export type { Theme, Color, Font } from "./types";
 export { default as SpecimenProvider } from "./SpecimenProvider";

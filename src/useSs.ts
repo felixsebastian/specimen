@@ -18,10 +18,10 @@ export interface SsProps {
   mb?: TShirtSizes;
   ml?: TShirtSizes;
   mr?: TShirtSizes;
-  bg?: string;
   radius?: TShirtSizes;
   boxShadow?: TShirtSizes;
   shadow?: TShirtSizes;
+  bg?: string;
   d?: string;
 }
 

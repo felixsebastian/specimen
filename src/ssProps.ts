@@ -1,0 +1,25 @@
+const ssProps = [
+  "w",
+  "h",
+  "p",
+  "px",
+  "py",
+  "pt",
+  "pb",
+  "pl",
+  "pr",
+  "m",
+  "mx",
+  "my",
+  "mt",
+  "mb",
+  "ml",
+  "mr",
+  "bg",
+  "radius",
+  "boxShadow",
+  "shadow",
+  "d",
+];
+
+export default ssProps;

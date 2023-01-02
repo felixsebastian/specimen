@@ -1,17 +1,13 @@
-import { css, SerializedStyles } from "@emotion/react";
+import { css } from "@emotion/react";
 import useTheme from "./useTheme";
-import { forwardRef, ReactNode, Ref } from "react";
-import Box from "./Box";
+import { forwardRef, Ref } from "react";
+import Box, { BoxProps } from "./Box";
 import { TShirtSizes } from "./units/tshirts";
 import { SsProps } from "./useSs";
 
-interface Props extends SsProps {
-  as?: string;
-  children?: ReactNode;
+interface Props extends BoxProps, SsProps {
   gap?: TShirtSizes;
   alignY?: "top" | "bottom" | "center";
-  css?: SerializedStyles;
-  className?: string;
 }
 
 const alignments = {
@@ -21,20 +17,19 @@ const alignments = {
 };
 
 export default forwardRef(
-  ({ alignY, ...props }: Props, ref: Ref<HTMLElement>) => {
+  ({ gap, alignY, ...props }: Props, ref: Ref<HTMLElement>) => {
     const { size } = useTheme();
 
     return (
       <Box
         ref={ref}
-        {...props}
         d="flex"
+        {...props}
         css={css({
           flexWrap: "wrap",
-          gap: size(props.gap ?? "md").raw,
+          gap: size(gap ?? "md").raw,
           alignItems: alignments[alignY ?? "top"],
         })}
-        className={props.className}
       />
     );
   }

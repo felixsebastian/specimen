@@ -1,32 +1,9 @@
 import { jsx } from "@emotion/react";
 import { omit } from "lodash";
 import { forwardRef, HTMLProps } from "react";
+import ssProps from "./ssProps";
 import useSs, { SsProps } from "./useSs";
 import WithChildren from "./WithChildren";
-
-const ssProps = [
-  "w",
-  "h",
-  "p",
-  "px",
-  "py",
-  "pt",
-  "pb",
-  "pl",
-  "pr",
-  "m",
-  "mx",
-  "my",
-  "mt",
-  "mb",
-  "ml",
-  "mr",
-  "bg",
-  "radius",
-  "boxShadow",
-  "shadow",
-  "d",
-];
 
 export interface Props
   extends SsProps,
@@ -34,19 +11,20 @@ export interface Props
     WithChildren {
   as?: string;
   handleClick?: (e: MouseEvent) => void;
+  testId?: string;
 }
 
-const propsToOmit = ["handleClick", "as", ...ssProps];
+const propsToOmit = [...ssProps, "handleClick", "as", "testId"];
+export type BoxProps = Props;
 
 export default forwardRef((props: Props, ref) => {
   const ss = useSs(props);
 
   return jsx(props.as ?? "div", {
-    ...omit(props, propsToOmit),
+    "data-testid": props.testId,
     onClick: props.handleClick,
+    ...omit(props, propsToOmit),
     css: ss,
     ref,
   });
 });
-
-export type BoxProps = Props;
