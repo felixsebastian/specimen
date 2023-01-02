@@ -5,12 +5,13 @@ import { createContext, HTMLProps, useContext } from "react";
 import useSs, { SsProps } from "../useSs";
 import { createStyleObject } from "@capsizecss/core";
 import { Style } from "./Style";
-import isTextContext from "./isTextContext";
+import isInlineContext from "./isInlineContext";
 import { TShirtSizes } from "../units/tshirts";
 import useStyleCss from "./useStyleCss";
 import WithChildren from "../WithChildren";
 
 const ssProps = ["bg", "radius"] as const;
+const IsInlineProvider = isInlineContext.Provider;
 
 const IsTextProvider = isTextContext.Provider;
 
@@ -47,7 +48,7 @@ export default (props: Props) => {
   if (!props.children) return null;
 
   return (
-    <IsTextProvider value={true}>
+    <IsInlineProvider value={true}>
       {jsx(props.as ?? (headingLevel ? `h${headingLevel}` : "p"), {
         ...omit(props, ssProps),
         css: css(ss, styleCss, {
@@ -60,6 +61,6 @@ export default (props: Props) => {
           }),
         }),
       })}
-    </IsTextProvider>
+    </IsInlineProvider>
   );
 };

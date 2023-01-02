@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import isTextContext from "./isTextContext";
+import isTextContext from "./isInlineContext";
 
 const useIsInline = () => useContext(isTextContext);
 
