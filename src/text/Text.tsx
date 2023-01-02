@@ -12,23 +12,32 @@ import WithChildren from "../WithChildren";
 
 const ssProps = ["bg", "radius"] as const;
 const IsInlineProvider = isInlineContext.Provider;
+type IntrinsicElementNames = keyof JSX.IntrinsicElements;
 
-const IsTextProvider = isTextContext.Provider;
+type Props = Pick<SsProps, typeof ssProps[number]> &
+  Style &
+  WithChildren &
+  HTMLProps<HTMLElement> & {
+    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+    font?: string;
+    size?: TShirtSizes;
+    align?: "left" | "center" | "right";
+    as?: IntrinsicElementNames;
+  };
 
-interface Props
-  extends Pick<SsProps, typeof ssProps[number]>,
-    Style,
-    Omit<HTMLProps<HTMLElement>, "size">,
-    WithChildren {
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  font?: string;
-  size?: TShirtSizes;
-  align?: "left" | "center" | "right";
-  as?: string;
-}
+const propsToOmit = [
+  ...ssProps,
+  "color",
+  "weight",
+  "bold",
+  "underline",
+  "font",
+  "size",
+  "align",
+  "as",
+];
 
 export type TextProps = Props;
-
 const textContext = createContext<Style>({});
 const Provider = textContext.Provider;
 
@@ -50,7 +59,7 @@ export default (props: Props) => {
   return (
     <IsInlineProvider value={true}>
       {jsx(props.as ?? (headingLevel ? `h${headingLevel}` : "p"), {
-        ...omit(props, ssProps),
+        ...omit(props, propsToOmit),
         css: css(ss, styleCss, {
           fontFamily: font.name,
           textAlign: props.align,
