@@ -5,7 +5,7 @@ import Span from "./Span";
 import Text from "./Text";
 import useIsInline from "./useIsInline";
 
-const textPropsToForward = ["color", "underline", "weight"] as const;
+const textPropsToForward = ["color", "underline", "weight", "italic"] as const;
 type TextPropsToForward = typeof textPropsToForward[number];
 
 const TextLink = ({

@@ -1,8 +1,9 @@
+import { CSSObject } from "@emotion/react";
 import useTheme from "../useTheme";
 import { Style } from "./Style";
 import weights from "./weights";
 
-const useStyleCss = (style: Style) => {
+const useStyleCss = (style: Style): CSSObject => {
   const { color } = useTheme();
 
   let weight;
@@ -17,6 +18,7 @@ const useStyleCss = (style: Style) => {
     color: color(style.color ?? "text").hex,
     fontWeight: weight,
     textDecoration: style.underline ? "underline" : undefined,
+    fontStyle: style.italic ? "italic" : "normal",
   };
 };
 

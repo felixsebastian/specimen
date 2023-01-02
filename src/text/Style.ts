@@ -7,4 +7,5 @@ export interface Style {
   underline?: boolean;
   bold?: boolean;
   weight?: Weight;
+  italic?: boolean;
 }
