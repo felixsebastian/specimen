@@ -3,6 +3,8 @@ export { default as Box } from "./Box";
 export { default as Stack } from "./Stack";
 export { default as Inline } from "./Inline";
 export { default as Center } from "./Center";
+export { default as Row } from "./Row";
+export { default as Column } from "./Column";
 export * from "./text";
 export { default as Link } from "./Link";
 export * from "./units/tshirts";

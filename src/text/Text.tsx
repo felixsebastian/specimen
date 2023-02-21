@@ -21,6 +21,7 @@ interface Props
     WithHtmlAttributes,
     BlockStyle {
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  lineGap?: number;
   as?: IntrinsicElementNames;
 }
 
@@ -33,7 +34,7 @@ export const TextProvider = ({
   ...props
 }: BlockStyle & WithChildren) => <Provider value={props}>{children}</Provider>;
 
-export default forwardRef((props: Props, ref) => {
+export default forwardRef(({ lineGap = 1, ...props }: Props, ref) => {
   const { fontSize, defaultFont, fonts } = useTheme();
   const ss = useSs(props);
   const contextProps = useContext(textContext);
@@ -56,7 +57,7 @@ export default forwardRef((props: Props, ref) => {
             textAlign: props.align,
             ...createStyleObject({
               capHeight: fontSize(size).raw,
-              lineGap: fontSize(size).raw,
+              lineGap: fontSize(size).raw * lineGap,
               fontMetrics: font.metrics,
             }),
           }),

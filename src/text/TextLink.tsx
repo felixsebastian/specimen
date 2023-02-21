@@ -52,6 +52,7 @@ const TextLink = (props: Props) => {
         onClick={props.handleClick}
         css={css(
           {
+            display: inline ? "inline-block" : "block",
             cursor: "pointer",
           },
           outline
