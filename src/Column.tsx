@@ -32,7 +32,7 @@ const Column = ({ width = "auto", ...props }: any) => {
         padding: `0 ${size(gap).raw / 2}px`,
         flexGrow,
         flexBasis,
-        flexShrink: 0,
+        flexShrink: 1,
       }}
     >
       {props.children}
