@@ -16,21 +16,21 @@ const alignments = {
   center: "center",
 };
 
-export default forwardRef(
-  ({ gap, alignY, ...props }: Props, ref: Ref<HTMLElement>) => {
-    const { size } = useTheme();
+const Inline = ({ gap, alignY, ...props }: Props, ref: Ref<unknown>) => {
+  const { size } = useTheme();
 
-    return (
-      <Box
-        ref={ref}
-        d="flex"
-        {...props}
-        css={css({
-          flexWrap: "wrap",
-          gap: size(gap ?? "md").raw,
-          alignItems: alignments[alignY ?? "top"],
-        })}
-      />
-    );
-  }
-);
+  return (
+    <Box
+      ref={ref}
+      d="flex"
+      {...props}
+      css={css({
+        flexWrap: "wrap",
+        gap: size(gap ?? "md").raw,
+        alignItems: alignments[alignY ?? "top"],
+      })}
+    />
+  );
+};
+
+export default forwardRef(Inline);

@@ -1,5 +1,5 @@
 import { jsx } from "@emotion/react";
-import { forwardRef } from "react";
+import { Ref, forwardRef } from "react";
 import getHtmlAttributes from "./getHtmlAttributes";
 import useSs, { SsProps } from "./useSs";
 import WithChildren from "./WithChildren";
@@ -13,7 +13,7 @@ export interface Props extends SsProps, WithHtmlAttributes, WithChildren {
 
 export type BoxProps = Props;
 
-export default forwardRef((props: Props, ref) => {
+const Box = (props: Props, ref: Ref<unknown>) => {
   const ss = useSs(props);
 
   return jsx(
@@ -28,4 +28,6 @@ export default forwardRef((props: Props, ref) => {
     },
     props.children
   );
-});
+};
+
+export default forwardRef(Box);

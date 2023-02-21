@@ -1,6 +1,6 @@
 import { css, CSSObject } from "@emotion/react";
 import useTheme from "./useTheme";
-import { forwardRef } from "react";
+import { forwardRef, Ref } from "react";
 import { TShirtSizes } from "./units/tshirts";
 import { isNull, omit } from "lodash";
 import Box, { BoxProps } from "./Box";
@@ -19,7 +19,7 @@ interface Props extends BoxProps {
 
 const propsToOmit = ["d", "alignX", "css", "gap"];
 
-export default forwardRef((props: Props, ref) => {
+const Stack = (props: Props, ref: Ref<unknown>) => {
   const { s } = useTheme();
 
   const dynamicStyles: CSSObject = {
@@ -41,4 +41,6 @@ export default forwardRef((props: Props, ref) => {
       ref={ref}
     />
   );
-});
+};
+
+export default forwardRef(Stack);

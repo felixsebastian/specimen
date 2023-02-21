@@ -1,19 +1,21 @@
 import useTheme from "./useTheme";
-import { useContext } from "react";
+import { forwardRef, Ref, useContext } from "react";
 import { gapContext } from "./Row";
-
-const roundDown = (n: number, precision: number) => {
-  const coeff = 10 ** precision;
-  return Math.floor(n * coeff) / coeff;
-};
+import WithChildren from "./WithChildren";
+import { floor, isNumber } from "lodash";
 
 const formatPercentage = (n: number) => n * 100 + "%";
 
-const Column = ({ width = "auto", ...props }: any) => {
+interface Props extends WithChildren {
+  width?: number | "auto" | "expand";
+}
+
+const Column = (
+  { width = "auto", ...props }: Props,
+  ref: Ref<HTMLDivElement>
+) => {
   const { size } = useTheme();
   const gap = useContext(gapContext);
-  if (typeof width === "number") width = formatPercentage(roundDown(width, 5));
-
   let flexGrow, flexBasis;
 
   if (width === "auto") {
@@ -23,11 +25,12 @@ const Column = ({ width = "auto", ...props }: any) => {
     flexBasis = 0;
   } else {
     flexGrow = 0;
-    flexBasis = width;
+    flexBasis = isNumber(width) ? formatPercentage(floor(width, 5)) : width;
   }
 
   return (
     <div
+      ref={ref}
       css={{
         padding: `0 ${size(gap).raw / 2}px`,
         flexGrow,
@@ -40,4 +43,4 @@ const Column = ({ width = "auto", ...props }: any) => {
   );
 };
 
-export default Column;
+export default forwardRef(Column);

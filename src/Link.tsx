@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { forwardRef, Ref, useContext } from "react";
 import navigationContext from "./navigationContext";
 import { useIsInline } from "./text";
 import WithChildren from "./WithChildren";
@@ -12,7 +12,9 @@ interface Props extends WithChildren {
   useNativeNavigation?: boolean;
 }
 
-export default ({ children, ...props }: Props) => {
+export type LinkProps = Props;
+
+const Link = ({ children, ...props }: Props, ref: Ref<HTMLAnchorElement>) => {
   const navigationFn = useContext(navigationContext);
   const isInline = useIsInline();
   const inline = props.inline ?? isInline;
@@ -20,6 +22,7 @@ export default ({ children, ...props }: Props) => {
 
   return (
     <a
+      ref={ref}
       href={props.to}
       target={props.newWindow ? "_blank" : undefined}
       css={css(
@@ -39,3 +42,5 @@ export default ({ children, ...props }: Props) => {
     </a>
   );
 };
+
+export default forwardRef(Link);

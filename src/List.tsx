@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, forwardRef, ReactNode, Ref } from "react";
 import Column from "./Column";
 import Row from "./Row";
 import Stack from "./Stack";
@@ -11,8 +11,11 @@ interface Props extends ComponentProps<typeof Stack> {
   type?: Type;
 }
 
-const List = ({ items, type = "unordered", ...props }: Props) => (
-  <Stack as={type === "unordered" ? "ul" : "ol"} {...props}>
+const List = (
+  { items, type = "unordered", ...props }: Props,
+  ref: Ref<unknown>
+) => (
+  <Stack ref={ref} as={type === "unordered" ? "ul" : "ol"} {...props}>
     {items.map((item, index) => (
       <Row as="li" gap="sm">
         <Column>
@@ -28,4 +31,4 @@ const List = ({ items, type = "unordered", ...props }: Props) => (
   </Stack>
 );
 
-export default List;
+export default forwardRef(List);

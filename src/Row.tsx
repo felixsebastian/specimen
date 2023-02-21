@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
-import { Children, createContext } from "react";
-import Box from "./Box";
+import { Children, createContext, forwardRef, Ref } from "react";
+import Box, { BoxProps } from "./Box";
 import Column from "./Column";
 import { TShirtSizes } from "./units/tshirts";
 import useTheme from "./useTheme";
+import WithChildren from "./WithChildren";
 
 const alignments = {
   top: "flex-start",
@@ -11,21 +12,27 @@ const alignments = {
   center: "center",
 };
 
+type Alignment = keyof typeof alignments;
+
 const context = createContext<TShirtSizes>("md");
 const Provider = context.Provider;
 export const gapContext = context;
 
-const Row = ({
-  children,
-  gap = "md",
-  simple,
-  alignY = "top",
-  ...props
-}: any) => {
+interface Props extends WithChildren, Omit<BoxProps, "d"> {
+  gap?: TShirtSizes;
+  simple?: boolean;
+  alignY?: Alignment;
+}
+
+const Row = (
+  { children, gap = "md", simple, alignY = "top", ...props }: Props,
+  ref: Ref<unknown>
+) => {
   const { size } = useTheme();
 
   return (
     <Box
+      ref={ref}
       d="flex"
       css={css`
         box-sizing: border-box;
@@ -46,4 +53,4 @@ const Row = ({
   );
 };
 
-export default Row;
+export default forwardRef(Row);

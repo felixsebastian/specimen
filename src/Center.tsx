@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
-import { forwardRef } from "react";
+import { forwardRef, Ref } from "react";
 import Box, { BoxProps } from "./Box";
 
-const Center = forwardRef((props: BoxProps, ref) => (
+const Center = (props: BoxProps, ref: Ref<unknown>) => (
   <Box
     d="flex"
     h="full"
@@ -13,6 +13,6 @@ const Center = forwardRef((props: BoxProps, ref) => (
     {...props}
     ref={ref}
   />
-));
+);
 
-export default Center;
+export default forwardRef(Center);

@@ -1,6 +1,6 @@
 import { jsx, css } from "@emotion/react";
 import useTheme from "../useTheme";
-import { createContext, useContext } from "react";
+import { createContext, Ref, useContext } from "react";
 import useSs, { SsProps } from "../useSs";
 import { createStyleObject } from "@capsizecss/core";
 import isInlineContext from "./isInlineContext";
@@ -34,7 +34,7 @@ export const TextProvider = ({
   ...props
 }: BlockStyle & WithChildren) => <Provider value={props}>{children}</Provider>;
 
-export default forwardRef(({ lineGap = 1, ...props }: Props, ref) => {
+const Text = ({ lineGap = 1, ...props }: Props, ref: Ref<unknown>) => {
   const { fontSize, defaultFont, fonts } = useTheme();
   const ss = useSs(props);
   const contextProps = useContext(textContext);
@@ -66,4 +66,6 @@ export default forwardRef(({ lineGap = 1, ...props }: Props, ref) => {
       )}
     </IsInlineProvider>
   );
-});
+};
+
+export default forwardRef(Text);
