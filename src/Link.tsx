@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { forwardRef, Ref, useContext } from "react";
+import { forwardRef, MouseEvent, Ref, useContext } from "react";
 import navigationContext from "./navigationContext";
 import { useIsInline } from "./text";
 import WithChildren from "./WithChildren";
@@ -10,6 +10,7 @@ interface Props extends WithChildren {
   newWindow?: boolean;
   inline?: boolean;
   useNativeNavigation?: boolean;
+  handleClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export type LinkProps = Props;
@@ -31,11 +32,13 @@ const Link = ({ children, ...props }: Props, ref: Ref<HTMLAnchorElement>) => {
         },
         outline
       )}
-      onClick={(e) => {
+      onClick={(event) => {
         if (!props.useNativeNavigation && navigationFn) {
-          e.preventDefault();
+          event.preventDefault();
           navigationFn(props.to);
         }
+
+        props.handleClick?.(event);
       }}
     >
       {children}
