@@ -36,7 +36,7 @@ const Column = (
         flexGrow,
         flexBasis,
         flexShrink: 1,
-        minWidth: 0
+        minWidth: typeof width === "number" ? 0 : undefined,
       }}
     >
       {props.children}
